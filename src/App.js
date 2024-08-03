@@ -8,16 +8,20 @@ import Home from './Home/Home';
 import RestaurantCard from './Restaurant/RestaurantCard';
 import RestaurantDetails from './Restaurant/RestaurantDetails';
 import Cart from './Cart/Cart';
+import Profile from './Profile/Profile';
+import CustomerRoutes from './Routers/CustomerRoutes';
 
 
 function App() {
   return (
     <ThemeProvider theme={Dark}> 
     <CssBaseline/>
-      <Navbar/>
+      {/* <Navbar/> */}
       {/* <Home/> */}
       {/* <RestaurantDetails/> */}
-      <Cart/>
+      {/* <Cart/> */}
+      {/* <Profile/>*/}
+      <CustomerRoutes/>
     </ThemeProvider>
   )
 }
