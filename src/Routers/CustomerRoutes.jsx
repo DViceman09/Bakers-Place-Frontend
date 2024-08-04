@@ -5,6 +5,7 @@ import Home from '../Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import { Profile } from '../Profile/Profile';
 import Navbar from '../Components/Navbar/Navbar';
+import Auth from '../Components/Auth/Auth';
 
 const CustomerRoutes = () => {
     return (
@@ -17,6 +18,7 @@ const CustomerRoutes = () => {
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/my-profile/*' element={<Profile/>}/>
         </Routes>
+        <Auth/>
         </div>
     );
 };
