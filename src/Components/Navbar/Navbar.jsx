@@ -8,9 +8,11 @@ import './Navbar.css';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Person } from '@mui/icons-material';
 import { pink } from '@mui/material/colors';
+import { useSelector } from 'react-redux';
 
 export const Navbar = () => {
     const navigate = useNavigate();
+    const {auth} = useSelector((store)=>store);
     return (
         <Box className='px-5 sticky top-0 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 flex
         justify-between'>
@@ -28,7 +30,9 @@ export const Navbar = () => {
                     </IconButton>
                 </div>
                 <div className=''>
-                    {false?<Avatar sx={{bgcolor: "white", color: pink.A400}}>C</Avatar>:
+                    {auth.user?<Avatar sx={{bgcolor: "white", color: pink.A400}}>
+                        {/* {auth.user?.fullName[0].toUpperCase()} */}
+                        </Avatar>:
                     <IconButton onClick={()=>navigate("/account/login")}>
                         <Person/>
                     </IconButton>}

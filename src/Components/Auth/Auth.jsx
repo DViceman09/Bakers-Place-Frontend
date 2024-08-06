@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Register from './Register';
 import Login from './Login';
 
-const Auth = () => {
+ export const Auth = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const handleOnClose = () => {

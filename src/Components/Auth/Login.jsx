@@ -2,11 +2,19 @@ import { Typography, Grid, TextField, Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../State/Authentication/Action';
+import { useDispatch } from 'react-redux';
 
+
+const initialValues = { email: '', password: '' };
 export const Login = () => {
-  const initialValues = { email: '', password: '' };
-  const handleSubmit = () => { };
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+  const handleSubmit = (values) => {
+      dispatch(loginUser({userData:values, navigate}));
+   };
+  
   return (
     <div>
       <Typography variant='h5' className='text-center'>Login</Typography>

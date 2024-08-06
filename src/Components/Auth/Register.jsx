@@ -3,6 +3,8 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button, TextField, Typography, CssBaseline, Container, MenuItem, Select } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../../State/Authentication/Action';
+import { useDispatch } from 'react-redux';
 
   const initialValues = {
     fullName: "",
@@ -24,14 +26,14 @@ import { useNavigate } from 'react-router-dom';
 
   export const Register = () => {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
+    
     const handleSubmit = (values) => {
       console.log("Form values:", values);
+      dispatch(registerUser({userData:values, navigate}));
     };
 
     return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <div>
           <Typography className="text-center" variant="h5">
             Register
@@ -105,7 +107,6 @@ import { useNavigate } from 'react-router-dom';
             <Button onClick={() => navigate("/account/login")}>Login</Button>
           </Typography>
         </div>
-      </Container>
     );
   };
 
