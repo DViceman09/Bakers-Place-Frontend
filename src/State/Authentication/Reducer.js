@@ -26,7 +26,7 @@ const initialState = {
   success: null,
 };
 
-export const authReducer = (state = initialState, action) => {
+const Reducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_REQUEST:
     case LOGIN_REQUEST:
@@ -91,4 +91,4 @@ export const authReducer = (state = initialState, action) => {
   }
 };
 
-export default authReducer;
+export default Reducer;

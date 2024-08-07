@@ -14,13 +14,12 @@ function App() {
   const { auth } = useSelector(store => store);
 
   useEffect(() => {
-    dispatch(getUser(auth.jwt || jwt));
+   
+    if (jwt) {
+      dispatch(getUser(jwt));
+    }
   }, [auth.jwt]);
 
-  useEffect(() => {
-    if (auth.user?.role === "ROLE_RESTAURANT_OWNER") {
-    }
-  }, [auth.user]);
   return (
     <ThemeProvider theme={Dark}>
       <CssBaseline />

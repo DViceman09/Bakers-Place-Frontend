@@ -26,7 +26,7 @@ const Home = () => {
            </section>
            <section className='px-5 lg:px-20 pt-8'>
                 <h1 className='text-2xl font-semibold text-center py-3 pb-8'>Order From Our Handpick Favourites</h1>
-                <div className='flex flex-wrap items-center justify-around gap-5'>
+                <div className='flex flex-wrap items-center justify-around gap-2'>
                     {
                         restaurant.map((item) => <RestaurantCard/>)
                     }
