@@ -51,7 +51,7 @@ import {
     try {
       dispatch({ type: LOGIN_REQUEST });
   
-      const { data } = await api.post(`/auth/signin`, reqData.data, api);
+      const { data } = await axios.post(`${API_URL}/auth/signin`, reqData.data);
       if(data.jwt) localStorage.setItem("jwt",data.jwt)
       if(data.role==="ROLE_RESTAURANT_OWNER"){
         reqData.navigate("/admin/restaurant")
