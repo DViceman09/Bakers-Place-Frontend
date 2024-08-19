@@ -1,8 +1,6 @@
 // Actions.js
 
-import { type } from "@testing-library/user-event/dist/type";
-import { api } from "../../../config/api";
-
+import { api} from "../../Components/config/api";
 import {
   CREATE_CATEGORY_FAILURE,
   CREATE_CATEGORY_REQUEST,
@@ -40,17 +38,22 @@ import {
   DELETE_RESTAURANT_REQUEST,
   DELETE_RESTAURANT_SUCCESS,
   DELETE_RESTAURANT_FAILURE,
+  GET_ALL_RESTAURANTS_FAILURE,
+  CREATE_RESTAURANT_REQUEST,
+  CREATE_RESTAURANT_FAILURE,
 } from "./Restaurant_ActionTypes";
 
-export const getAllRestaurantsAction = (token) => {
+export const getAllRestaurantsAction = (jwt) => {
   return async (dispatch) => {
     dispatch({type: GET_ALL_RESTAURANTS_REQUEST});
+    console.log("jwt", jwt);
     try {
-      const { data } = await api.get("/api/restaurants", {
+      const {data} = await api.get('/api/restaurants', {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${jwt}`,
         },
       });
+      console.log("all restaurant ", data);
       dispatch({type: GET_ALL_RESTAURANTS_SUCCESS, payload: data});
       console.log("all restaurant ", data);
     } catch (error) {
@@ -291,6 +294,7 @@ export const getRestaurantsCategory = ({ jwt,restaurantId }) => {
       console.log("get restaurants category ", res.data);
       dispatch({ type: GET_RESTAURANTS_CATEGORY_SUCCESS, payload: res.data });
     } catch (error) {
+      console.log("catch - ", error);
       dispatch({ type: GET_RESTAURANTS_CATEGORY_FAILURE, payload: error });
     }
   };

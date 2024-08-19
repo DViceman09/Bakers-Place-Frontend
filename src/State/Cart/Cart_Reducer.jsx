@@ -1,6 +1,5 @@
-// Reducers.js
-import { LOGOUT } from "../../Authentication/ActionType";
-import * as actionTypes from "./ActionTypes";
+import { LOGOUT } from "../../State/Authentication/ActionType";
+import * as actionTypes from "./Cart_ActionTypes";
 
 const initialState = {
   cart: null,

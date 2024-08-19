@@ -23,7 +23,7 @@ import {
     console.log("This is the Registration data ", reqData.userData)
     try {
       dispatch({ type: REGISTER_REQUEST });
-      console.log("Step 1:Dispatch type REGISTER_REQUEST complete", reqData.userData)
+      console.log("Step 1: Dispatch type REGISTER_REQUEST complete", reqData.userData)
       const { data } = await api.post(`/auth/signup`, reqData.userData);
       console.log("Step 2: Axios post called and data stored in const", reqData.userData)
       if(data.jwt) localStorage.setItem("jwt",data.jwt)
@@ -92,7 +92,7 @@ import {
     };
   };
   
-  export const addToFavorites = ({restaurantId,jwt}) => {
+  export const addToFavorites = ({restaurantId, jwt}) => {
     return async (dispatch) => {
       dispatch({ type: ADD_TO_FAVORITES_REQUEST });
       try {
@@ -101,7 +101,7 @@ import {
             Authorization: `Bearer ${jwt}`,
           },
         });
-        console.log("Add to favorites ",data)
+        console.log("Add to favorites ", data)
         dispatch({ type: ADD_TO_FAVORITES_SUCCESS, payload: data });
       } catch (error) {
         console.log("catch error ",error)
