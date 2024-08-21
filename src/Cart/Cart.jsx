@@ -4,6 +4,7 @@ import CartItems from './CartItems';
 import AddressCard from './AddressCard';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useSelector } from 'react-redux';
 // import * as Yup from 'yup';
 
 export const style = {
@@ -24,7 +25,7 @@ const initialValues = { streetAddress: '', state: '', pincode: '', city: '' };
 //     state: Yup.string().required('State is required'), pincode: Yup.string().required('Pincode is required'),
 //     city: Yup.string().required('City is required')
 
-const Cart = () => {
+const Cart = ({item}) => {
     const createOrderUsingSelectedAddress = () => {
         console.log('Order created using selected address');
     }
@@ -32,6 +33,7 @@ const Cart = () => {
     const handleOpenAddressModel = () => setOpen(true);
     const items = [1, 1, 1];
     const [open, setOpen] = React.useState(false);
+    const {cart} = useSelector(state => state);
     const handleClose = () => setOpen(false);
     const handleSubmit = (values) => {
         console.log("formValue", values)
@@ -40,7 +42,7 @@ const Cart = () => {
         <>
             <main className='lg:flex justify-between'>
                 <section className='lg:w-[30%] space-y-6 lg:min-h-screen pt-5'>
-                    {items.map((item) => (<CartItems />))}
+                    {cart.cartItems.map((item) => (<CartItems item={item}/>))}
                     <Divider />
                     <div className='billDetails px-5 text-sm'>
                         <p className='font-extralight py-5 text-xl'>
@@ -49,21 +51,21 @@ const Cart = () => {
                         <div className='space-y-3'>
                             <div className='flex justify-between text-gray-400'>
                                 <p>Item Total</p>
-                                <p>200</p>
+                                <p>₹{cart.cart.total}</p>
                             </div>
                             <div className='flex justify-between text-gray-400'>
                                 <p>Delivery Fees</p>
-                                <p>15</p>
+                                <p>₹15</p>
                             </div>
                             <div className='flex justify-between text-gray-400'>
                                 <p>GST & Restaurant</p>
-                                <p>33</p>
+                                <p>₹33</p>
                             </div>
                             <Divider />
                         </div>
                         <div className='flex justify-between text-gray-400 pt-2'>
                             <p>Total payable</p>
-                            <p>3000</p>
+                            <p>₹{cart.cart.total+33+21}</p>
                         </div>
                     </div>
                 </section>
