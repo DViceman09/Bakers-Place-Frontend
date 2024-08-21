@@ -5,9 +5,27 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Button } from '@mui/material';
 import { Add } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../State/Cart/Cart_Action';
 
 
-const MenuCard = () => {
+const MenuCard = ({item}) => {
+  const dispatch = useDispatch();
+  const handleAddItemToCart = (e) => {
+    e.preventDefault();
+    const reqData = {
+      token: localStorage.getItem('jwt'),
+      cartItem: {
+        foodId: item.food_id,
+        quantity: 1
+      }
+    }
+    dispatch(addItemToCart(reqData));
+    console.log("reqData",reqData);
+  };
+
+ 
+
     return (
         <Accordion>
         <AccordionSummary
@@ -17,11 +35,11 @@ const MenuCard = () => {
         >
           <div className='lg:flex items-center justify-between'>
             <div className='lg:flex items-center lg:gap-5'>
-                <img className='w-[7rem] h-[7rem] object-cover' src='https://cdn.pixabay.com/photo/2020/11/28/12/25/bread-5784572_1280.jpg'/>
+                <img className='w-[7rem] h-[7rem] object-cover' src={item.images[0]}/>
                 <div className='space-y-1 lg:space-y-5 lg:max-w-2xl'>
-                <p className='font-semibold text-xl'>Sourdough Bread</p>
-                <p>499Rs</p>
-                <p className='text-gray-400'> Sourdough is made by combining flour and water and then setting it aside for a period of a few days. During this time, yeasts that are naturally present in the air combine with the mixture and begin to ferment, which creates the sour flavour noted in its name. </p>
+                <p className='font-semibold text-xl'>{item.food_name}</p>
+                <p>₹{item.price}</p>
+                <p className='text-gray-400'> {item.description} </p>
 
                 </div>
             </div>
@@ -29,11 +47,13 @@ const MenuCard = () => {
           </div>
         </AccordionSummary>
         <AccordionDetails>
+          <form onClick={handleAddItemToCart}>
           <div className='pt-5'>
             <Button type='submit' variant='contained' disabled = {false}>
-                {true?"Add To Cart":"Out Of Stock"}
+                {true?"Add To Cart" : "Out Of Stock"}
             </Button>
           </div>
+          </form>
         </AccordionDetails>
       </Accordion>
     );

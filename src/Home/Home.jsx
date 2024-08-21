@@ -4,6 +4,7 @@ import Carousel from './Carousel';
 import RestaurantCard from '../Restaurant/RestaurantCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRestaurantsAction } from '../State/Restaurant/Restaurant_Action';
+import { findCart } from '../State/Cart/Cart_Action';
 
 const restaurants = [1,1,1,1,1,1,1,1]
 
