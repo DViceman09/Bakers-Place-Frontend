@@ -1,6 +1,7 @@
-import { api } from "../../../config/api";
-import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, GET_USERS_NOTIFICATION_REQUEST, GET_USERS_ORDERS_FAILURE, GET_USERS_ORDERS_REQUEST, GET_USERS_ORDERS_SUCCESS } from "./Order_ActionsType";
-import { GET_USERS_NOTIFICATION_FAILURE, GET_USERS_NOTIFICATION_SUCCESS } from "./State/Authentication/ActionType";
+
+import { api } from "../../Components/config/api";
+import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, GET_USERS_NOTIFICATION_FAILURE, GET_USERS_NOTIFICATION_REQUEST, GET_USERS_NOTIFICATION_SUCCESS, GET_USERS_ORDERS_FAILURE, GET_USERS_ORDERS_REQUEST, GET_USERS_ORDERS_SUCCESS } from "./Order_ActionsType";
+
 
 
 export const createOrder = (reqData) => {
@@ -34,9 +35,10 @@ export const getUsersOrders = (jwt) => {
             Authorization: `Bearer ${jwt}`,
           },
       });
-      console.log("users order ",data)
+      console.log("users order ", data)
       dispatch({type:GET_USERS_ORDERS_SUCCESS,payload:data});
     } catch (error) {
+      console.log("user Order error ",error)
       dispatch({type:GET_USERS_ORDERS_FAILURE,payload:error});
     }
   };
