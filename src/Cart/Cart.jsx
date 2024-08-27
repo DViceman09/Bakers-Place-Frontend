@@ -155,7 +155,7 @@ const Cart = ({item}) => {
                                         />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Button variant="contained" color="primary" type='submit' fullWidth>Add</Button>
+                                    <Button variant="contained" color="primary" type='submit' fullWidth>Deliver Here</Button>
                                 </Grid>
                             </Grid>
                         </Form> 

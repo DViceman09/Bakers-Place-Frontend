@@ -42,7 +42,7 @@ const MenuCard = ({item}) => {
             />
 
             <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
-              <p className="font-semibold text-xl">{item.name}</p>
+              <p className="font-semibold text-xl">{item.food_name}</p>
               <p>₹{item.price}</p>
               <p className="text-gray-400">{item.description}</p>
             </div>
