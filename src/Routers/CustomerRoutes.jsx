@@ -9,7 +9,7 @@ import Auth from '../Components/Auth/Auth';
 import PaymentSuccess from '../PaymentSuccess/PaymentSuccess';
 import PaymentFail from '../PaymentFail/PaymentFail';
 
-const CustomerRoutes = () => {
+export const CustomerRoutes = () => {
     return (
             <div className='relative'>
             <Navbar/>

@@ -1,17 +1,15 @@
-import { GET_RESTAURANTS_ORDER_FAILURE, 
-  GET_RESTAURANTS_ORDER_REQUEST, 
-  GET_RESTAURANTS_ORDER_SUCCESS, 
-  UPDATE_ORDER_STATUS_FAILURE, 
-  UPDATE_ORDER_STATUS_REQUEST, 
-  UPDATE_ORDER_STATUS_SUCCESS } from "./RestaurantOrder_ActionTypes";
+// reducers.js
 
+import { GET_RESTAURANTS_ORDER_FAILURE, GET_RESTAURANTS_ORDER_REQUEST, GET_RESTAURANTS_ORDER_SUCCESS, UPDATE_ORDER_STATUS_FAILURE, UPDATE_ORDER_STATUS_REQUEST, UPDATE_ORDER_STATUS_SUCCESS } from "./Admin_Order_ActionTypes";
+
+  
   const initialState = {
     loading: false,
     error: null,
     orders:[]
   };
   
-  const restaurantsOrderReducer = (state = initialState, action) => {
+  export const restaurantsOrderReducer = (state = initialState, action) => {
     switch (action.type) {
       case GET_RESTAURANTS_ORDER_REQUEST:
       case UPDATE_ORDER_STATUS_REQUEST:

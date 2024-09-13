@@ -6,20 +6,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllRestaurantsAction } from '../State/Restaurant/Restaurant_Action';
 import { findCart } from '../State/Cart/Cart_Action';
 
-const restaurants = [1,1,1,1,1,1,1,1]
 
 const Home = () => {
 
+    const { auth, restaurant } = useSelector(store => store);
     const dispatch = useDispatch();
-    const jwt = localStorage.getItem('jwt');
-    const {restaurant} = useSelector(store => store)
-
-    console.log("restaurant", restaurant);
-
+    console.log("restaurant ", restaurant);
     useEffect(() => {
-        dispatch(getAllRestaurantsAction(jwt))
-    },[])
-
+    if (auth.user) {
+      dispatch(getAllRestaurantsAction(auth.jwt || localStorage.getItem("jwt")));
+    }
+  }, [auth.user]);
     return (
         <div className='pb-10'>
            <section className='banner -z-50 relative flex flex-col justify-center items-center'>

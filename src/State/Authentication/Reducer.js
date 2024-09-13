@@ -26,7 +26,7 @@ const initialState = {
   success: null,
 };
 
-const Reducer = (state = initialState, action) => {
+export const Reducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_REQUEST:
     case LOGIN_REQUEST:

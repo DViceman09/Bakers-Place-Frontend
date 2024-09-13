@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getUser } from './State/Authentication/Action';
 import { findCart } from './State/Cart/Cart_Action';
+import Routers from './Routers/Routers';
+import { getRestaurantByUserId } from './State/Restaurant/Restaurant_Action';
 
 
 function App() {
@@ -22,10 +24,14 @@ function App() {
     }
   }, [auth.jwt]);
 
+  useEffect(() => {
+    dispatch(getRestaurantByUserId(jwt));
+  }, [auth.user]);
+
   return (
     <ThemeProvider theme={Dark}>
       <CssBaseline />
-      <CustomerRoutes />
+      <Routers/>
     </ThemeProvider>
   )
 }

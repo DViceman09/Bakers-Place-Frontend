@@ -11,7 +11,7 @@ const initialState = {
   error: null,
 };
 
-const cartReducer = (state = initialState, action) => {
+export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case FIND_CART_REQUEST:
     case GET_ALL_CART_ITEMS_REQUEST:

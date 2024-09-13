@@ -40,7 +40,7 @@ const initialState = {
   categories: [],
 };
 
-const restaurantReducer = (state = initialState, action) => {
+export const restaurantReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_RESTAURANT_REQUEST:
     case GET_ALL_RESTAURANTS_REQUEST:

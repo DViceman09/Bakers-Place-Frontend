@@ -28,14 +28,17 @@ const RestaurantDetails = () => {
 
     const {id, city} = useParams();
 
+    const {restaurantId} = useParams();
+
     useEffect(() => {
         dispatch(getRestaurantById({jwt, restaurantId : id}))
         dispatch(getRestaurantsCategory({jwt, restaurantId : id}))
     },[])
 
     useEffect(() => {
-        dispatch(getMenuItemsByRestaurantId({jwt, restaurantId : id, Veg: foodType==="vegetarian", NonVeg: foodType==="non-vegetarian", Seasonal: foodType==="seasonal", food_category: selectedCategory}))
+        dispatch(getMenuItemsByRestaurantId({jwt, restaurantId : id, vegetarian: foodType==="vegetarian", nonveg: foodType==="non-vegetarian", seasonal: foodType==="seasonal", foodCategory: selectedCategory}))
     },[selectedCategory, foodType])
+
 
     const handleFilter=(e)=>{
         setFoodType(e.target.value)
@@ -55,41 +58,41 @@ const RestaurantDetails = () => {
                         <Grid item xs={12}>
                             <img
                                 className='w-full h-[40vh] object-cover'
-                                src= {restaurant.restaurant?.images[0]} />
+                                src= {restaurant.usersRestaurant?.images[0]} />
                         </Grid>
 
                         <Grid item xs={12} lg={6}>
                             <img
                                 className='w-full h-[40vh] object-cover'
-                                src={restaurant.restaurant?.images[1]} />
+                                src={restaurant.usersRestaurant?.images[1]} />
                         </Grid>
 
                         <Grid item xs={12} lg={6}>
                             <img
                                 className='w-full h-[40vh] object-cover'
-                                src={restaurant.restaurant?.images[2]} />
+                                src={restaurant.usersRestaurant?.images[2]} />
                         </Grid>
                     </Grid>
                 </div>
                 <div className='pt-3 pb-5'>
                     <h1 className='text-4xl font-semibold'>
-                        {restaurant.restaurant?.restaurant_name}
+                        {restaurant.usersRestaurant?.restaurant_name}
                     </h1>
                     <p className='text-gray-500 flex items-center gap-3 pb-3'>
                         <span>
-                            {restaurant.restaurant?.description}
+                            {restaurant.usersRestaurant?.description}
                         </span>
                     </p>
                     <p className='text-gray-500 flex items-center gap-3 pb-3'>
                         <LocationOnIcon />
                         <span>
-                            {restaurant.restaurant?.restaurant_address?.city}
+                            {restaurant.usersRestaurant?.restaurant_address?.city}
                         </span>
                     </p>
                     <p className='text-gray-500 flex items-center gap-3 pb-3'>
                         <CalendarTodayIcon />
                         <span>
-                            {restaurant.restaurant?.openingHours}
+                            {restaurant.usersRestaurant?.openingHours}
                         </span>
                     </p>
                 </div>
@@ -116,7 +119,7 @@ const RestaurantDetails = () => {
                                 Food category
                             </Typography>
                             <FormControl className='py-10 space-y-5' component={"fieldset"}>
-                                 <RadioGroup onChange={handleFilterCategory} name='food_category' value={selectedCategory}>
+                                 <RadioGroup onChange={handleFilterCategory} name='foodCategory' value={selectedCategory}>
                                     {restaurant.categories.map((item)=> <FormControlLabel value={item.name} control={<Radio/>} label={item.name} />)}
                                 </RadioGroup>
                             </FormControl>

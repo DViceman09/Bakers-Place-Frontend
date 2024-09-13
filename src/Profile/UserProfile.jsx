@@ -7,7 +7,8 @@ const UserProfile = () => {
 
 
   const handleLogout=()=>{
-
+    localStorage.removeItem('jwt');
+    window.location.href="/";
   }
   return (
     <div className='min-h-[80vh] flex flex-col justify-center items-center text-center'>

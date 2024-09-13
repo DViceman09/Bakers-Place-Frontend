@@ -9,7 +9,7 @@ const initialState = {
   message:null
 };
 
-const menuItemReducer = (state = initialState, action) => {
+export const menuItemReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CREATE_MENU_ITEM_REQUEST:
     case actionTypes.GET_MENU_ITEMS_BY_RESTAURANT_ID_REQUEST:
@@ -40,7 +40,7 @@ const menuItemReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         menuItems: state.menuItems.filter(
-          (menuItem) => menuItem.id !== action.payload
+        (menuItem) => menuItem.id !== action.payload
         ),
       };
       case actionTypes.UPDATE_MENU_ITEMS_AVAILABILITY_SUCCESS:
